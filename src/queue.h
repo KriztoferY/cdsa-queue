@@ -85,6 +85,9 @@ void Queue_destroy(Queue* queue);
 /**
  * @brief Queries the capacity of a queue.
  *
+ * For node-based implementations, it always return `ULONG_MAX` to suggest that
+ * the queue can hold as many elements as system memory allows.
+ *
  * @param queue The queue to query.
  * @return Maximum number of elements that can be stored by the queue.
  */
