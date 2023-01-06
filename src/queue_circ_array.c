@@ -1,7 +1,8 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) 2022, KriztoferY <https://github.com/KriztoferY>
+Copyright (c) 2022, KriztoferY (https://github.com/KriztoferY)
+All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -30,10 +31,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /**
- * @file queue_circ_array.c
- *
- * Implementation of the ADT queue as an unbounded queue using a circular array
- * with dynamic resizing strategy.
+ * @brief Implementation of the ADT queue as an unbounded queue using a circular
+ * array with dynamic resizing strategy.
  *
  * @note Use the compiler flag `QUEUE_INIT_CAP` and `QUEUE_GROW_FACTOR` to
  *      override the default initial capacity of the underlying array and

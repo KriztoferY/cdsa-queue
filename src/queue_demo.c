@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) 2022, KriztoferY <https://github.com/KriztoferY>
+Copyright (c) 2022, KriztoferY (https://github.com/KriztoferY)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
