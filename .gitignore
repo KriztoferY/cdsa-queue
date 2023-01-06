@@ -53,3 +53,9 @@ dkms.conf
 
 # Binaries
 bin/
+
+# Documentation
+docs/
+
+# macOS
+.DS_Store
