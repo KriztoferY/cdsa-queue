@@ -2,7 +2,17 @@
 
 **CDSA - Queue** (`cdsa-queue`) is a C module that provides generic implementations of the Queue ADT and related algorithms.
 
-The Queue ADT (or any implementation of **generic queue**) is presented as the opaque type `Queue`. The interface for the Queue ADT is defined in the `queue.h` header file. Different implementations of the Queue ADT are compiled into separate static libraries.
+The Queue ADT (or any implementation of **generic queue**) is presented as the opaque type `Queue`. The interface for the Queue ADT is defined in the `queue.h` header file. Different implementations of the Queue ADT are compiled into 
+separate static libraries. There're two implementations of the Queue ADT 
+included off the shelf:
+
+* `queue_circ_array.c` : Circular array based queue -- compiled as the 
+  `libqueuearr` static library
+
+* `queue_linked_list.c` : Singly linked list based queue -- compiled as the 
+  `libqueuenode` static library
+
+Here's a little program to familiarize you with the interface.
 
 ```c
 ...
@@ -38,10 +48,10 @@ int main() {
 }
 ```
 Suppose we'd like to use the circular array based implementation of the Queue
-ADT in the above sample program `myprog.c`. Let's say the static library is 
-located at `/path/to/lib` and is named `libqueuearr` (as specified in the
-Makefile included). To compile the program into an executable `myprog`, at the 
-minimum, run
+ADT in the above sample program `myprog.c`. Let's say the corresponding static 
+library is located at `/path/to/lib` and is named `libqueuearr` (as specified 
+in the Makefile included). To compile the program into an executable `myprog`, 
+at the minimum, run
 
 ```bash
 $ gcc -std=c99 -L/path/to/lib -lqueuearr myprog.c -o myprog
