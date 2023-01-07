@@ -137,4 +137,22 @@ bool Queue_enqueue(Queue* queue, void const* elem);
  */
 bool Queue_dequeue(Queue* queue);
 
+/**
+ * @brief Prints a string representation of the elements in a queue to the
+ * standard output.
+ *
+ * Elements are listed in queue order from left to right in a horizontal
+ * layout, or from top to bottom in a vertical layout.
+ *
+ * @param[in] queue The queue of which the elements to print. It's a no-op if
+ *      `queue` is `NULL`.
+ * @param[in] sep A string used to separate successive elements. Has no effect
+ *      if `vertical` is `true`. Defaults to ",".
+ * @param[in] vertical Elements are listed vertically if `true`, horizontally
+ *      otherwise.
+ * @param[in] print_element A function to use for printing a queue element.
+ */
+void Queue_print(Queue* queue, char const* sep, bool vertical,
+                 void (*print_element)(void const*));
+
 #endif /* QUEUE_H */

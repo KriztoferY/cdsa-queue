@@ -44,6 +44,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <assert.h>   // assert()
 #include <stdlib.h>   // malloc(), free()
 #include <string.h>   // memcpy()
+#include <stdio.h>    // printf()
 
 // clang-format off
 #ifdef QUEUE_INIT_CAP
@@ -209,4 +210,23 @@ bool Queue_dequeue(Queue* queue) {
     }
 
     return true;
+}
+
+void Queue_print(Queue* queue, char const* sep, bool vertical,
+                 void (*print_element)(void const*)) {
+    assert(queue != NULL);
+    if (sep == NULL) sep = ",";
+
+    size_t const n_elems = queue->nelems;
+
+    void* elem           = NULL;
+    for (size_t i = 0; i < n_elems; ++i) {
+        if (vertical) printf("[%lu] ", i);
+        elem = (char*)queue->elems +
+               (((queue->start + i) % queue->cap) * queue->elemsz);
+        print_element(elem);
+        vertical
+            ? printf("\n")
+            : ((i == n_elems - 1) ? printf("%s", "\n") : printf("%s", sep));
+    }
 }

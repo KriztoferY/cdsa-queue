@@ -48,6 +48,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string.h>   // memcpy()
 #include <limits.h>   // ULONG_MAX
 #include <assert.h>   // assert()
+#include <stdio.h>    // printf()
 
 struct queue
 {
@@ -161,4 +162,27 @@ bool Queue_dequeue(Queue* queue) {
     free(front);
 
     return true;
+}
+
+void Queue_print(Queue* queue, char const* sep, bool vertical,
+                 void (*print_element)(void const*)) {
+    assert(queue != NULL);
+    if (sep == NULL) sep = ",";
+
+    size_t const n_elems = queue->nelems;
+
+    void*  node          = queue->front;
+    void*  elem;
+    size_t i = 0;
+    do {
+        if (vertical) printf("[%lu] ", i);
+        elem = (char*)node + sizeof(void*);
+        print_element(elem);
+        vertical
+            ? printf("\n")
+            : ((i == n_elems - 1) ? printf("%s", "\n") : printf("%s", sep));
+        // Advance to next node
+        node = *(void**)node;
+        ++i;
+    } while (node);
 }
