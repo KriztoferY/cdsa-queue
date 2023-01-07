@@ -64,7 +64,7 @@ typedef struct queue Queue;
  * @brief Creates an empty, heap-allocated queue.
  *
  * It's the caller's responsibility to
- * -# call  `Queue_destroy()` to free all allocated memory associated
+ * -# call `Queue_destroy()` to free all allocated memory associated
  *    with the queue created; and
  * -# ensure `elem_sz` is a proper positive integer.
  *
