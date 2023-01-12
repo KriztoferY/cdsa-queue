@@ -44,26 +44,29 @@ Queue* merge_queues(Queue* queue1, Queue* queue2, size_t elem_sz,
         assert(res && "Queue_dequeue() failed when queue not empty");
     }
 
-    free(elem1);
+    // Retain elem1 on the heap to copy front element into for rest of algo
     free(elem2);
 
+    // Find out which queue has unprocessed elements
     if (!Queue_empty(queue1)) {
         curr_queue = queue1;
     } else {
         curr_queue = queue2;
     }
 
-    // Handle unprocessed tail
+    // Sequentially move unprocessed elements into the merged queue
     while (!Queue_empty(curr_queue)) {
-        res = Queue_front(curr_queue, curr_elem);
+        res = Queue_front(curr_queue, elem1);
         assert(res && "Queue_front() failed when queue not empty");
 
-        res = Queue_enqueue(merged, curr_elem);
+        res = Queue_enqueue(merged, elem1);
         assert(res && "cannot allocate memory to filful enqueue()");
 
         res = Queue_dequeue(curr_queue);
         assert(res && "Queue_dequeue() failed when queue not empty");
     }
+
+    free(elem1);
 
     return merged;
 }
