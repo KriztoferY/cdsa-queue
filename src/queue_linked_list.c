@@ -180,9 +180,8 @@ void Queue_print(Queue* queue, char const* sep, bool vertical,
         if (vertical) printf("[%lu] ", i);
         elem = (char*)node + sizeof(void*);
         print_element(elem);
-        vertical
-            ? printf("\n")
-            : ((i == n_elems - 1) ? printf("%s", "\n") : printf("%s", sep));
+        vertical ? printf("\n")
+                 : ((i == n_elems - 1) ? printf("%s", "") : printf("%s", sep));
         // Advance to next node
         node = *(void**)node;
         ++i;

@@ -225,8 +225,7 @@ void Queue_print(Queue* queue, char const* sep, bool vertical,
         elem = (char*)queue->elems +
                (((queue->start + i) % queue->cap) * queue->elemsz);
         print_element(elem);
-        vertical
-            ? printf("\n")
-            : ((i == n_elems - 1) ? printf("%s", "\n") : printf("%s", sep));
+        vertical ? printf("\n")
+                 : ((i == n_elems - 1) ? printf("%s", "") : printf("%s", sep));
     }
 }
