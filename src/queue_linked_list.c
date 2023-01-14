@@ -171,7 +171,9 @@ void Queue_print(Queue* queue, char const* sep, bool vertical,
 
     size_t const n_elems = queue->nelems;
 
-    void*  node          = queue->front;
+    void* node           = queue->front;
+    if (node == NULL) return;
+
     void*  elem;
     size_t i = 0;
     do {
