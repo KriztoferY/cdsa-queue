@@ -71,4 +71,17 @@ void run_tests(UnitTest* tests) {
     printf("%s\n", "ALL PASSED");
 }
 
+/**
+ * @brief Error handler.
+ *
+ * Prints the specified error message to describe the cause of error and then
+ * terminate the program in which this function is called.
+ *
+ * @param message Error message to print to stderr.
+ */
+void handle_error(char const* message) {
+    fprintf(stderr, "%s\n", message);
+    exit(EXIT_FAILURE);
+}
+
 #endif /* TEST_UTILS_H */

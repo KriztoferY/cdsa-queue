@@ -35,18 +35,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string.h>   // strcmp()
 #include <assert.h>   // assert()
 
-#include "test_utils.h"   // UnitTest, run_tests()
+#include "test_utils.h"   // UnitTest, run_tests(), handle_error()
 #include "queue.h"        // Queue, Queue_*()
 
 static int    NUMS[]      = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5 };
 static size_t MAX_N_ELEMS = sizeof(NUMS) / sizeof(int);
 
 void print_int(void const* a) { printf("%d", *(int*)a); }
-
-void handle_error(char const* message) {
-    fprintf(stderr, "%s\n", message);
-    exit(EXIT_FAILURE);
-}
 
 Queue* create_empty_test_queue(size_t elem_sz) {
     Queue* q = Queue_create(sizeof(int));
