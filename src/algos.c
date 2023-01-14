@@ -12,6 +12,13 @@ Queue* merge_queues(Queue* queue1, Queue* queue2, size_t elem_sz,
     if (queue2 == NULL) return queue1;
     assert(compare != NULL && "compare is not a binary predicate");
 
+    bool q1_is_empty = Queue_empty(queue1);
+    bool q2_is_empty = Queue_empty(queue2);
+
+    if (q1_is_empty && q2_is_empty) return NULL;
+    if (q1_is_empty && !q2_is_empty) return queue2;
+    if (!q1_is_empty && q2_is_empty) return queue1;
+
     void* elem1 = malloc(elem_sz);
     void* elem2 = malloc(elem_sz);
     bool  res;
