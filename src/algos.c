@@ -15,8 +15,6 @@ Queue* merge_queues(Queue* queue1, Queue* queue2, size_t elem_sz,
     void* elem1 = malloc(elem_sz);
     void* elem2 = malloc(elem_sz);
     bool  res;
-    res = Queue_front(queue1, elem1);
-    assert(res && "Queue_front() failed when queue not empty");
 
     Queue* merged     = Queue_create(elem_sz);
     Queue* curr_queue = NULL;
