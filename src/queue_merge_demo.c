@@ -64,6 +64,7 @@ int main() {
     }
     printf("%s", "q1 : ");
     Queue_print(q1, ",", false, print_int);
+    printf("\n");
 
     // Create another queue
     Queue*       q2      = Queue_create(sizeof(int));
@@ -75,6 +76,7 @@ int main() {
     }
     printf("%s", "q2 : ");
     Queue_print(q2, ",", false, print_int);
+    printf("\n");
 
     // Stable-merge: larger the element value, higher the priority
     printf("%s\n", "merging q1 and q2...");
@@ -82,6 +84,7 @@ int main() {
 
     printf("%s", "q  : ");
     Queue_print(q, ",", false, print_int);
+    printf("\n");
 
     // Deallocate memory on the heap
     Queue_destroy(q1);
