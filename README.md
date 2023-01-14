@@ -99,7 +99,7 @@ Queue_destroy(q);
 
 The module is designed to be **extensible** that developers can write their own implementations and make it a standalone static library with a standardized interface for the Queue ADT, as well as being compatible with the generic algorithms defined in the `algos.h` header.
 
-For more details, visit the <a href="https://kriztofery.github.io/cppdsa-queue" target="_blank">documentation site</a>.
+For more details, visit the <a href="https://kriztofery.github.io/cdsa-queue" target="_blank">documentation site</a>.
 
 Here's what you need to get started.
 
