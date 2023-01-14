@@ -137,15 +137,16 @@ $ make
 
 On success, it builds both static libraries and demo programs. In that case, you'll find two newly created subdirectories (in the first build) under the project root.
 1. `lib/` --- contains the static libraries (`*.a` archive files).
-2. `bin/` --- contains the executable demo programs (`*_demo`).
+2. `bin/` --- contains the executable demo programs (`*_demo`) and test programs (`test_*`).
 
 **ASIDE** : The header files for the Queue ADT and the related generic algorithms are located in the `src/` subdirectory.
 
-Alternatively, you may build only the demo programs or libraries individually like so:
+Alternatively, you may build only the demo programs, test programs, or libraries individually like so:
 
 ```bash
 $ make libs     # all static libraries
 $ make *_demo   # only the *_demo program
+$ make test_*   # only the test_* unit test
 ```
 
 ### Clean <!-- omit in toc -->
