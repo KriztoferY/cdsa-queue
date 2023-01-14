@@ -85,7 +85,7 @@ int main(int argc, char** argv) {
         x        *= 10;
 
         res      = Queue_enqueue(q, &elem);
-        assert(res && "cannot allocate memory to filful enqueue()");
+        assert(res && "cannot allocate memory to complete enqueue()");
         res = Queue_front(q, &front_elem);
         assert(res && "Queue_front() failed when queue not empty");
         printf("Queue_enqueue(q, %d) :: front: %d | size: %lu | cap: %lu\n",

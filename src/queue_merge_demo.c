@@ -60,7 +60,7 @@ int main() {
     bool         res;
     for (size_t i = 0; i < n1; ++i) {
         res = Queue_enqueue(q1, &nums1[i]);
-        assert(res && "cannot allocate memory to filful enqueue()");
+        assert(res && "cannot allocate memory to complete enqueue()");
     }
     printf("%s", "q1 : ");
     Queue_print(q1, ",", false, print_int);
@@ -71,7 +71,7 @@ int main() {
     size_t const n2      = sizeof(nums2) / sizeof(int);
     for (size_t i = 0; i < n2; ++i) {
         res = Queue_enqueue(q2, &nums2[i]);
-        assert(res && "cannot allocate memory to filful enqueue()");
+        assert(res && "cannot allocate memory to complete enqueue()");
     }
     printf("%s", "q2 : ");
     Queue_print(q2, ",", false, print_int);
