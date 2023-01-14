@@ -8,41 +8,53 @@ LIB = lib
 default: prep all
 
 .PHONY : all
-all: queue_circ_array_demo queue_linked_list_demo queue_merge_demo \
-queue_circ_array_test queue_linked_list_test
+all: circ_array_queue_demo linked_list_queue_demo merge_queues_demo \
+test_circ_array_queue test_linked_list_queue \
+test_merge_queues_circ_array test_merge_queues_linked_list
 	rm -f $(BIN)/*.o
 
 prep:
 	mkdir -p $(BIN) $(LIB)
 
-queue_circ_array_demo: queue_demo.o libqueuearr.a 
-	$(C) $(CFLAGS) -o $(BIN)/queue_circ_array_demo $(BIN)/queue_demo.o \
+circ_array_queue_demo: queue_demo.o libqueuearr.a 
+	$(C) $(CFLAGS) -o $(BIN)/circ_array_queue_demo $(BIN)/queue_demo.o \
 	-L./$(LIB) -lqueuearr
 
-queue_linked_list_demo: queue_demo.o libqueuenode.a 
-	$(C) $(CFLAGS) -o $(BIN)/queue_linked_list_demo $(BIN)/queue_demo.o \
+linked_list_queue_demo: queue_demo.o libqueuenode.a 
+	$(C) $(CFLAGS) -o $(BIN)/linked_list_queue_demo $(BIN)/queue_demo.o \
 	-L./$(LIB) -lqueuenode
 
-queue_merge_demo: queue_merge_demo.o libqueuearr.a libqueuealgos.a
-	$(C) $(CFLAGS) -o $(BIN)/queue_merge_demo $(BIN)/queue_merge_demo.o \
+merge_queues_demo: merge_queues_demo.o libqueuearr.a libqueuealgos.a
+	$(C) $(CFLAGS) -o $(BIN)/merge_queues_demo $(BIN)/merge_queues_demo.o \
 	-L./$(LIB) -lqueuenode -lqueuealgos
 
 queue_demo.o:
 	$(C) $(CFLAGS) -o $(BIN)/queue_demo.o -c $(SRC)/queue_demo.c
 
-queue_merge_demo.o:
-	$(C) $(CFLAGS) -o $(BIN)/queue_merge_demo.o -c $(SRC)/queue_merge_demo.c
+merge_queues_demo.o:
+	$(C) $(CFLAGS) -o $(BIN)/merge_queues_demo.o -c $(SRC)/merge_queues_demo.c
 
-queue_circ_array_test: test_queue_impl.o libqueuearr.a
+test_circ_array_queue: test_queue_impl.o libqueuearr.a
 	$(C) $(CFLAGS) -o $(BIN)/test_circ_array_queue $(BIN)/test_queue_impl.o \
 	-L./$(LIB) -lqueuearr
 
-queue_linked_list_test: test_queue_impl.o libqueuenode.a
+test_linked_list_queue: test_queue_impl.o libqueuenode.a
 	$(C) $(CFLAGS) -o $(BIN)/test_linked_list_queue $(BIN)/test_queue_impl.o \
 	-L./$(LIB) -lqueuenode
 
 test_queue_impl.o: 
 	$(C) $(CFLAGS) -I$(SRC) -o $(BIN)/test_queue_impl.o -c $(TEST)/test_queue_impl.c
+
+test_merge_queues_circ_array: test_merge_queues.o libqueuearr.a libqueuealgos.a
+	$(C) $(CFLAGS) -o $(BIN)/test_merge_queues_circ_array $(BIN)/test_merge_queues.o \
+	-L./$(LIB) -lqueuearr -lqueuealgos
+
+test_merge_queues_linked_list: test_merge_queues.o libqueuenode.a libqueuealgos.a
+	$(C) $(CFLAGS) -o $(BIN)/test_merge_queues_linked_list $(BIN)/test_merge_queues.o \
+	-L./$(LIB) -lqueuenode -lqueuealgos
+
+test_merge_queues.o: 
+	$(C) $(CFLAGS) -I$(SRC) -o $(BIN)/test_merge_queues.o -c $(TEST)/test_merge_queues.c
 
 queue_circ_array.o:
 	$(C) $(CFLAGS) -o $(BIN)/queue_circ_array.o -c $(SRC)/queue_circ_array.c
@@ -66,7 +78,8 @@ libs: libqueuearr.a libqueuenode.a libqueuealgos.a
 
 .PHONY : clean
 clean:
-	rm -f $(BIN)/queue_circ_array_demo $(BIN)/queue_linked_list_demo \
-	$(BIN)/queue_merge_demo \
-	$(BIN)/qqueue_circ_array_test $(BIN)/qqueue_linked_list_test \
+	rm -f $(BIN)/circ_array_queue_demo $(BIN)/linked_list_queue_demo \
+	$(BIN)/merge_queues_demo \
+	$(BIN)/test_circ_array_queue $(BIN)/test_linked_list_queue \
+	$(BIN)/test_merge_queues_circ_array $(BIN)/test_merge_queues_linked_list \
 	$(BIN)/*.o $(LIB)/*.a $(BIN)/*.gch
